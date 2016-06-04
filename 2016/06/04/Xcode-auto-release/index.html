@@ -6,21 +6,32 @@
   <title>Xcode auto release | MeetIn | Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="iOS,xcode">
-  <meta name="description">
+  <meta name="keywords" content="Xcode,automator,appscript,shell script">
+  <meta name="description" content="曾使用过Xcode上传release包，平均耗时 1h，全程人工参与曾使用过Application Loader上传release包，平均耗时 20min，全程人工参与现在使用automator制作的自动传包工具AutoLoader，平均耗时 10min，人工参与2s">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Xcode auto release">
 <meta property="og:url" content="http://meetinco.github.io/2016/06/04/Xcode-auto-release/index.html">
 <meta property="og:site_name" content="MeetIn">
-<meta property="og:description">
-<meta property="og:updated_time" content="2016-06-04T10:25:47.000Z">
+<meta property="og:description" content="曾使用过Xcode上传release包，平均耗时 1h，全程人工参与曾使用过Application Loader上传release包，平均耗时 20min，全程人工参与现在使用automator制作的自动传包工具AutoLoader，平均耗时 10min，人工参与2s">
+<meta property="og:image" content="http://7xtaiq.com1.z0.glb.clouddn.com/image/xcode-service.png?imageMogr2/thumbnail/100000@">
+<meta property="og:image" content="http://7xtaiq.com1.z0.glb.clouddn.com/image/automator-new.png?imageMogr2/thumbnail/100000@">
+<meta property="og:image" content="http://7xtaiq.com1.z0.glb.clouddn.com/image/automator-edit1.png?imageView2/2/w/600">
+<meta property="og:image" content="http://7xtaiq.com1.z0.glb.clouddn.com/image/automator-edit2.png?imageMogr2/thumbnail/100000@">
+<meta property="og:image" content="http://7xtaiq.com1.z0.glb.clouddn.com/image/automator-edit3.png?imageMogr2/thumbnail/100000@">
+<meta property="og:image" content="http://7xtaiq.com1.z0.glb.clouddn.com/image/automator-edit4.png?imageMogr2/thumbnail/100000@">
+<meta property="og:image" content="http://7xtaiq.com1.z0.glb.clouddn.com/image/automator-edit5.png?imageMogr2/thumbnail/100000@">
+<meta property="og:image" content="http://7xtaiq.com1.z0.glb.clouddn.com/image/automator-edit6.png?imageMogr2/thumbnail/100000@">
+<meta property="og:image" content="http://7xtaiq.com1.z0.glb.clouddn.com/image/automator-appstore.png?imageMogr2/thumbnail/100000@">
+<meta property="og:updated_time" content="2016-06-04T11:41:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Xcode auto release">
-<meta name="twitter:description">
+<meta name="twitter:description" content="曾使用过Xcode上传release包，平均耗时 1h，全程人工参与曾使用过Application Loader上传release包，平均耗时 20min，全程人工参与现在使用automator制作的自动传包工具AutoLoader，平均耗时 10min，人工参与2s">
+<meta name="twitter:image" content="http://7xtaiq.com1.z0.glb.clouddn.com/image/xcode-service.png?imageMogr2/thumbnail/100000@">
   
     <link rel="alternative" href="/atom.xml" title="MeetIn" type="application/atom+xml">
   
-  <meta name="summary" content="null">
+  <meta name="summary" content="&lt;p&gt;曾使用过Xcode上传release包，平均耗时 1h，全程人工参与&lt;br&gt;曾使用过Application Loader上传release包，平均耗时 20min，全程人工参与&lt;br&gt;现在使用automator制作的自动传包工具AutoLoader，平均耗时 10min，人工参与2s&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xtaiq.com1.z0.glb.clouddn.com/image/xcode-service.png?imageMogr2/thumbnail/100000@&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;">
   <link rel="shortcut icon" href="/favicon.ico">
   <link rel="stylesheet" href="/css/style.css">
 </head>
@@ -123,7 +134,7 @@
     
       <div class="post-meat flex-row">
         <div class="flex-col">
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xcode/">xcode</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Xcode/">Xcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/appscript/">appscript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/automator/">automator</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell-script/">shell script</a></li></ul>
 </div>
       </div>
       <div class="post-body">
@@ -171,7 +182,7 @@
 
           
           <nav class="post-toc-wrap" id="post-toc">
-            
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#自动打包"><span class="post-toc-text">自动打包</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#预备知识"><span class="post-toc-text">预备知识</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用xcodebuild打包"><span class="post-toc-text">使用xcodebuild打包</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用altool提交ipa"><span class="post-toc-text">使用altool提交ipa</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用-Automator"><span class="post-toc-text">使用 Automator</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#资源下载"><span class="post-toc-text">资源下载</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置修改"><span class="post-toc-text">配置修改</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#最后"><span class="post-toc-text">最后</span></a></li></ol>
           </nav>
           
         </aside>
@@ -179,7 +190,73 @@
         <div class="post-main">
 
             <div class="post-content" id="post-content" itemprop="postContent">
-            
+            <p>曾使用过Xcode上传release包，平均耗时 1h，全程人工参与<br>曾使用过Application Loader上传release包，平均耗时 20min，全程人工参与<br>现在使用automator制作的自动传包工具AutoLoader，平均耗时 10min，人工参与2s</p>
+<p><img src="http://7xtaiq.com1.z0.glb.clouddn.com/image/xcode-service.png?imageMogr2/thumbnail/100000@" alt="image"></p>
+<a id="more"></a>
+<h2 id="自动打包"><a href="#自动打包" class="headerlink" title="自动打包"></a>自动打包</h2><p>网上已经有许多开发者共享的打包脚本，只要输入一个命令就可以自动打包、发布、邮件通知。<br>但是最近发现，一个简单的方法，可以让我们变得更懒一些。</p>
+<h2 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h2><p>这里不会专门讲解以下知识（因为你不需要这些知识也可以使用本文提供的工具），请自行了解  </p>
+<ol>
+<li>使用 automator <a href="https://www.raywenderlich.com/58986/automator-for-mac-tutorial-and-examples" target="_blank" rel="external">Automator for Mac OS X: Tutorial and Examples</a>  </li>
+<li>使用 shell script <a href="https://github.com/qinjx/30min_guides/blob/master/shell.md" target="_blank" rel="external">Shell脚本编程30分钟入门</a>  </li>
+<li>使用 applescript <a href="https://developer.apple.com/library/mac/documentation/AppleScript/Conceptual/AppleScriptLangGuide/introduction/ASLR_intro.html" target="_blank" rel="external">Introduction to AppleScript Language Guide</a>  </li>
+<li>xcodebuild <a href="https://developer.apple.com/legacy/library/documentation/Darwin/Reference/ManPages/man1/xcodebuild.1.html" target="_blank" rel="external">xcodebuild 手册</a>  </li>
+<li>Application Loader altool <a href="http://help.apple.com/itc/apploader/#/apdATD1E53-D1E1A1303-D1E53A1126" target="_blank" rel="external">altool 手册</a></li>
+</ol>
+<h2 id="使用xcodebuild打包"><a href="#使用xcodebuild打包" class="headerlink" title="使用xcodebuild打包"></a>使用xcodebuild打包</h2><p><strong>xcodebuild</strong><br>打包、导出ipa都是使用的 xcodebuild<br>可能你的工程需要指定 target，或者需要其他参数才能打出正确的包，了解一下xcodebuild还是很有必要的<br>代码中用到的exportOptionsPlist是一个plis配置文件，稍后可以下载到</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#xcodebuild 简单示例</span><br><span class="line">#build clean</span><br><span class="line">xcodebuild clean -configuration &quot;$configuration&quot; -alltargets</span><br><span class="line"></span><br><span class="line">#archive</span><br><span class="line">xcodebuild archive -workspace &quot;$workspaceName&quot; -scheme &quot;$scheme&quot; -configuration &quot;$configuration&quot; -archivePath $&#123;archivePath&#125;/$&#123;archiveName&#125;.xcarchive CODE_SIGN_IDENTITY=&quot;$codeSignIdentity&quot; PROVISIONING_PROFILE=&quot;$appStoreProvisioningProfile&quot;</span><br><span class="line"></span><br><span class="line">#导出到ipa</span><br><span class="line">xcodebuild -exportArchive -archivePath $&#123;archivePath&#125;/$&#123;archiveName&#125;.xcarchive -exportOptionsPlist &quot;$exportOptionsPlist&quot; -exportPath $&#123;archivePath&#125;/$&#123;archiveName&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="使用altool提交ipa"><a href="#使用altool提交ipa" class="headerlink" title="使用altool提交ipa"></a>使用altool提交ipa</h2><p><strong>Application Loader altool</strong><br>altool 位于 Application Loader，三个参数 ipapath、appleid、password<br>在这之前我都是使用的Application Loader上传包到 iTunesConnect</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#altool 简单示例</span><br><span class="line">#validate</span><br><span class="line">&quot;$altoolPath&quot; --validate-app -f &quot;$ipaPath&quot; -u &quot;$appleid&quot; -p &quot;$applepassword&quot; -t ios --output-format xml</span><br><span class="line"></span><br><span class="line">#upload</span><br><span class="line">&quot;$altoolPath&quot; --upload-app -f &quot;$ipaPath&quot; -u &quot;$appleid&quot; -p &quot;$applepassword&quot; -t ios --output-format xml</span><br></pre></td></tr></table></figure>
+<h2 id="使用-Automator"><a href="#使用-Automator" class="headerlink" title="使用 Automator"></a>使用 Automator</h2><p>Automator创建的workflow可以和其他应用程序无缝衔接，在【服务】选项里面可以找到自己为某个目标定制的workflow。<br>使用Automator为xcode定制一个【服务】很简单，所以并没有考虑为xcode开发一个插件。  </p>
+<ul>
+<li><strong>打开Automator</strong></li>
+<li><strong>新建一个service</strong><br><img src="http://7xtaiq.com1.z0.glb.clouddn.com/image/automator-new.png?imageMogr2/thumbnail/100000@" alt="image"></li>
+<li><strong>修改服务需要的输入、选取需要服务的应用</strong><br><img src="http://7xtaiq.com1.z0.glb.clouddn.com/image/automator-edit1.png?imageView2/2/w/600" alt="image"></li>
+<li><strong>加入流程一</strong><br>Automator应用界面左侧，打开资料库面板，点击【变量】，在搜索框中输入“path”，选择目标路径变量，拖拽到中间区域<br><img src="http://7xtaiq.com1.z0.glb.clouddn.com/image/automator-edit2.png?imageMogr2/thumbnail/100000@" alt="image"><br>拖拽到中间区域<br><img src="http://7xtaiq.com1.z0.glb.clouddn.com/image/automator-edit3.png?imageMogr2/thumbnail/100000@" alt="image"></li>
+<li><strong>选取项目工程根路径</strong><br>在 Automator 应用界面的下方，双击刚才【Destination Path】，在弹出面板中选择工程路径，选择后点击【完成】<br><img src="http://7xtaiq.com1.z0.glb.clouddn.com/image/automator-edit4.png?imageMogr2/thumbnail/100000@" alt="image"></li>
+<li><strong>加入流程二</strong><br>automator应用界面左侧，打开资料库面板，点击【操作】，在搜索框中输入“applescript”，选择运行AppleScript，拖拽到中间区域步骤1的下方<br><img src="http://7xtaiq.com1.z0.glb.clouddn.com/image/automator-edit5.png?imageMogr2/thumbnail/100000@" alt="image"><br>拖拽到中间区域<br><img src="http://7xtaiq.com1.z0.glb.clouddn.com/image/automator-edit6.png?imageMogr2/thumbnail/100000@" alt="image"></li>
+<li><p><strong>编辑 Applescript</strong><br>在 代码框中输入以下内容  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> on run &#123;input, parameters&#125;tell application &quot;Terminal&quot;	activate	do script &quot;cd &quot; &amp; input &amp; &quot; &amp;&amp; . BuildScript/xcode-archive-release.sh&quot;end tellreturn input end run</span><br></pre></td></tr></table></figure>
+<p>脚本文件 xcode-archive-release.sh 我放到了工程目录的 BuildScript 文件夹里面<br>这段 Applescript 脚本做的事就是 打开 Terminal，cd 到工程目录，运行BuildScript文件夹里面的脚本文件</p>
+</li>
+<li><p><strong>最终看起来是这个样子的</strong><br><img src="http://7xtaiq.com1.z0.glb.clouddn.com/image/automator-appstore.png?imageMogr2/thumbnail/100000@" alt="image"></p>
+</li>
+<li><p><strong>最后，保存文件，输入文件名字就可以了。打开xcode，看看是否有了新的 service 选项</strong></p>
+</li>
+</ul>
+<h2 id="资源下载"><a href="#资源下载" class="headerlink" title="资源下载"></a>资源下载</h2><ul>
+<li><a href="http://7xtdgs.com1.z0.glb.clouddn.com/BuildScript.zip" target="_blank" rel="external">上传到 iTunesconnect shell 脚本</a></li>
+<li><a href="http://7xtdgs.com1.z0.glb.clouddn.com/%E5%8F%91%E5%B8%83%E8%87%B3AppStore.workflow.zip" target="_blank" rel="external">Automator workflow文件</a></li>
+<li>下载的脚本文件解压后，放到项目里，与 xxx.xcworkspace（xxx.xcodeproj） 同一级</li>
+<li>修改 xcode-archive-release.sh 里面的配置（见<strong>配置修改</strong>）</li>
+<li>修改 release_exportOptions.plist 里面的 teamID</li>
+<li>下载下来的 workflow 文件不用解压，用Automator打开，修改工程目录（参考<strong>使用 Automator</strong>）</li>
+</ul>
+<h2 id="配置修改"><a href="#配置修改" class="headerlink" title="配置修改"></a>配置修改</h2><p>打开 Terminal ,cd 到工程目录下，运行命令<code>xcodebuild -list</code>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$:xcodebuild -list</span><br><span class="line">Targets:</span><br><span class="line">        XXXXXX</span><br><span class="line">        XXXXXXTests</span><br><span class="line"></span><br><span class="line">    Build Configurations:</span><br><span class="line">        Debug</span><br><span class="line">        Release</span><br><span class="line"></span><br><span class="line">    If no build configuration is specified and -scheme is not passed then &quot;Release&quot; is used.</span><br><span class="line"></span><br><span class="line">    Schemes:</span><br><span class="line">        XXXXXX</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><strong>archiveName</strong><br>打包 archive 文件的名字（不用后缀）  </p>
+</li>
+<li><p><strong>workspaceName</strong><br>工程文件的名字（需要后缀）  </p>
+</li>
+<li><p><strong>scheme</strong><br>运行命令<code>xcodebuild -list</code>得到的<code>Schemes</code>，可能是一个列表，选一个你需要的  </p>
+</li>
+<li><p><strong>codeSignIdentity</strong><br>形如：iPhone Distribution: xxxx Inc. (xxxxxxx)<br>进入<code>Build Settings</code>, 编辑<code>Code Signing identity</code>成打release包需要的，再点击一下刚才选中的选项，弹出框中点击<code>Other</code>就可以获得形如<code>iPhone Distribution: xxxx Inc. (xxxxxxx)</code>的数据  </p>
+</li>
+<li><p><strong>appStoreProvisioningProfile</strong><br>形如：xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx<br>获取方法与上面类似，最终获得形如<code>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx</code>的数据  </p>
+</li>
+<li><p><strong>configuration</strong><br>值为：Release<br>运行命令<code>xcodebuild -list</code>得到的<code>Build Configurations</code>，有两个选项，打release包，所以值为Release  </p>
+</li>
+<li><p><strong>exportOptionsPlist</strong><br>存放release_exportOptions.plist文件的相对路径<br>如果下载到的BuildScript文件夹存放到项目根目录，其值为<code>BuildScript/release_exportOptions.plist</code>  </p>
+</li>
+<li><p><strong>ipaPath</strong><br>导出ipa文件的路径<br>altool工具回到该路径获取需要上传的ipa文件，其值应为<code>${PWD}/build/${archiveName}/${scheme}.ipa</code>  </p>
+</li>
+<li><p><strong>appleid</strong><br>开发者账号（邮箱）  </p>
+</li>
+<li><p><strong>applepassword</strong><br>开发者账号的密码</p>
+</li>
+</ul>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>本文讲述了Automator工具创建自动化流程，这仅仅是Automator的一部分。<br>善用Automator，工作会更轻松。</p>
+
             <blockquote>
               <p>
                 本文地址：
