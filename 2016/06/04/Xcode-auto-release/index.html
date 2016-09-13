@@ -203,9 +203,9 @@
 <li>Application Loader altool <a href="http://help.apple.com/itc/apploader/#/apdATD1E53-D1E1A1303-D1E53A1126" target="_blank" rel="external">altool 手册</a></li>
 </ol>
 <h2 id="使用xcodebuild打包"><a href="#使用xcodebuild打包" class="headerlink" title="使用xcodebuild打包"></a>使用xcodebuild打包</h2><p><strong>xcodebuild</strong><br>打包、导出ipa都是使用的 xcodebuild<br>可能你的工程需要指定 target，或者需要其他参数才能打出正确的包，了解一下xcodebuild还是很有必要的<br>代码中用到的exportOptionsPlist是一个plis配置文件，稍后可以下载到</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#xcodebuild 简单示例</span><br><span class="line">#build clean</span><br><span class="line">xcodebuild clean -configuration &quot;$configuration&quot; -alltargets</span><br><span class="line"></span><br><span class="line">#archive</span><br><span class="line">xcodebuild archive -workspace &quot;$workspaceName&quot; -scheme &quot;$scheme&quot; -configuration &quot;$configuration&quot; -archivePath $&#123;archivePath&#125;/$&#123;archiveName&#125;.xcarchive CODE_SIGN_IDENTITY=&quot;$codeSignIdentity&quot; PROVISIONING_PROFILE=&quot;$appStoreProvisioningProfile&quot;</span><br><span class="line"></span><br><span class="line">#导出到ipa</span><br><span class="line">xcodebuild -exportArchive -archivePath $&#123;archivePath&#125;/$&#123;archiveName&#125;.xcarchive -exportOptionsPlist &quot;$exportOptionsPlist&quot; -exportPath $&#123;archivePath&#125;/$&#123;archiveName&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">#xcodebuild 简单示例</div><div class="line">#build clean</div><div class="line">xcodebuild clean -configuration &quot;$configuration&quot; -alltargets</div><div class="line"></div><div class="line">#archive</div><div class="line">xcodebuild archive -workspace &quot;$workspaceName&quot; -scheme &quot;$scheme&quot; -configuration &quot;$configuration&quot; -archivePath $&#123;archivePath&#125;/$&#123;archiveName&#125;.xcarchive CODE_SIGN_IDENTITY=&quot;$codeSignIdentity&quot; PROVISIONING_PROFILE=&quot;$appStoreProvisioningProfile&quot;</div><div class="line"></div><div class="line">#导出到ipa</div><div class="line">xcodebuild -exportArchive -archivePath $&#123;archivePath&#125;/$&#123;archiveName&#125;.xcarchive -exportOptionsPlist &quot;$exportOptionsPlist&quot; -exportPath $&#123;archivePath&#125;/$&#123;archiveName&#125;</div></pre></td></tr></table></figure>
 <h2 id="使用altool提交ipa"><a href="#使用altool提交ipa" class="headerlink" title="使用altool提交ipa"></a>使用altool提交ipa</h2><p><strong>Application Loader altool</strong><br>altool 位于 Application Loader，三个参数 ipapath、appleid、password<br>在这之前我都是使用的Application Loader上传包到 iTunesConnect</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#altool 简单示例</span><br><span class="line">#validate</span><br><span class="line">&quot;$altoolPath&quot; --validate-app -f &quot;$ipaPath&quot; -u &quot;$appleid&quot; -p &quot;$applepassword&quot; -t ios --output-format xml</span><br><span class="line"></span><br><span class="line">#upload</span><br><span class="line">&quot;$altoolPath&quot; --upload-app -f &quot;$ipaPath&quot; -u &quot;$appleid&quot; -p &quot;$applepassword&quot; -t ios --output-format xml</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#altool 简单示例</div><div class="line">#validate</div><div class="line">&quot;$altoolPath&quot; --validate-app -f &quot;$ipaPath&quot; -u &quot;$appleid&quot; -p &quot;$applepassword&quot; -t ios --output-format xml</div><div class="line"></div><div class="line">#upload</div><div class="line">&quot;$altoolPath&quot; --upload-app -f &quot;$ipaPath&quot; -u &quot;$appleid&quot; -p &quot;$applepassword&quot; -t ios --output-format xml</div></pre></td></tr></table></figure>
 <h2 id="使用-Automator"><a href="#使用-Automator" class="headerlink" title="使用 Automator"></a>使用 Automator</h2><p>Automator创建的workflow可以和其他应用程序无缝衔接，在【服务】选项里面可以找到自己为某个目标定制的workflow。<br>使用Automator为xcode定制一个【服务】很简单，所以并没有考虑为xcode开发一个插件。  </p>
 <ul>
 <li><strong>打开Automator</strong></li>
@@ -215,7 +215,7 @@
 <li><strong>选取项目工程根路径</strong><br>在 Automator 应用界面的下方，双击刚才【Destination Path】，在弹出面板中选择工程路径，选择后点击【完成】<br><img src="http://7xtaiq.com1.z0.glb.clouddn.com/image/automator-edit4.png?imageMogr2/thumbnail/100000@" alt="image"></li>
 <li><strong>加入流程二</strong><br>automator应用界面左侧，打开资料库面板，点击【操作】，在搜索框中输入“applescript”，选择运行AppleScript，拖拽到中间区域步骤1的下方<br><img src="http://7xtaiq.com1.z0.glb.clouddn.com/image/automator-edit5.png?imageMogr2/thumbnail/100000@" alt="image"><br>拖拽到中间区域<br><img src="http://7xtaiq.com1.z0.glb.clouddn.com/image/automator-edit6.png?imageMogr2/thumbnail/100000@" alt="image"></li>
 <li><p><strong>编辑 Applescript</strong><br>在 代码框中输入以下内容  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> on run &#123;input, parameters&#125;tell application &quot;Terminal&quot;	activate	do script &quot;cd &quot; &amp; input &amp; &quot; &amp;&amp; . BuildScript/xcode-archive-release.sh&quot;end tellreturn input end run</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"> on run &#123;input, parameters&#125;tell application &quot;Terminal&quot;	activate	do script &quot;cd &quot; &amp; input &amp; &quot; &amp;&amp; . BuildScript/xcode-archive-release.sh&quot;end tellreturn input end run</div></pre></td></tr></table></figure>
 <p>脚本文件 xcode-archive-release.sh 我放到了工程目录的 BuildScript 文件夹里面<br>这段 Applescript 脚本做的事就是 打开 Terminal，cd 到工程目录，运行BuildScript文件夹里面的脚本文件</p>
 </li>
 <li><p><strong>最终看起来是这个样子的</strong><br><img src="http://7xtaiq.com1.z0.glb.clouddn.com/image/automator-appstore.png?imageMogr2/thumbnail/100000@" alt="image"></p>
@@ -232,7 +232,7 @@
 <li>下载下来的 workflow 文件不用解压，用Automator打开，修改工程目录（参考<strong>使用 Automator</strong>）</li>
 </ul>
 <h2 id="配置修改"><a href="#配置修改" class="headerlink" title="配置修改"></a>配置修改</h2><p>打开 Terminal ,cd 到工程目录下，运行命令<code>xcodebuild -list</code>  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$:xcodebuild -list</span><br><span class="line">Targets:</span><br><span class="line">        XXXXXX</span><br><span class="line">        XXXXXXTests</span><br><span class="line"></span><br><span class="line">    Build Configurations:</span><br><span class="line">        Debug</span><br><span class="line">        Release</span><br><span class="line"></span><br><span class="line">    If no build configuration is specified and -scheme is not passed then &quot;Release&quot; is used.</span><br><span class="line"></span><br><span class="line">    Schemes:</span><br><span class="line">        XXXXXX</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">$:xcodebuild -list</div><div class="line">Targets:</div><div class="line">        XXXXXX</div><div class="line">        XXXXXXTests</div><div class="line"></div><div class="line">    Build Configurations:</div><div class="line">        Debug</div><div class="line">        Release</div><div class="line"></div><div class="line">    If no build configuration is specified and -scheme is not passed then &quot;Release&quot; is used.</div><div class="line"></div><div class="line">    Schemes:</div><div class="line">        XXXXXX</div></pre></td></tr></table></figure>
 <ul>
 <li><p><strong>archiveName</strong><br>打包 archive 文件的名字（不用后缀）  </p>
 </li>
@@ -266,6 +266,21 @@
             </blockquote>
             </div>
             
+<nav class="post-nav flex-row">
+  <div class="flex-col waves-block waves-effect prev">
+    
+      <a href="/2016/09/13/2016-09-13-wei-xin-gong-zhong-hao-kai-fa-yi-ji-wei-xin-kai-fa-huan-jing-zhu-yi-shi-xiang/" title="微信公众号开发以及微信开发环境注意事项" id="post-prev" class="post-nav-link">
+        <i class="icon icon-chevron-left"></i>
+        <span class="article-nav-title">上一篇</span>
+      </a>
+    
+  </div>
+  <div class="flex-col waves-block waves-effect next">
+    
+  </div>
+
+</nav>
+
 
 
             
