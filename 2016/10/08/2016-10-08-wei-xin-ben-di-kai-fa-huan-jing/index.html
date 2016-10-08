@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>微信本地开发环境 | MeetIn | Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="微信,ngrok">
+  <meta name="description" content="借助ngrok实现微信本地开发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信本地开发环境">
+<meta property="og:url" content="http://meetinco.github.io/2016/10/08/2016-10-08-wei-xin-ben-di-kai-fa-huan-jing/index.html">
+<meta property="og:site_name" content="MeetIn">
+<meta property="og:description" content="借助ngrok实现微信本地开发">
+<meta property="og:updated_time" content="2016-10-08T08:54:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="微信本地开发环境">
+<meta name="twitter:description" content="借助ngrok实现微信本地开发">
+  
+    <link rel="alternative" href="/atom.xml" title="MeetIn" type="application/atom+xml">
+  
+  <meta name="summary" content="&lt;p&gt;借助ngrok实现微信本地开发&lt;br&gt;">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="loading" class="active"></div>
+
+  <nav id="menu" class="hide" >
+   <div class="inner flex-row-vertical">
+  <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+      <i class="icon icon-lg icon-close"></i>
+  </a>
+  <div class="brand-wrap">
+    <div class="brand">
+      <a href="/" class="avatar"><img src="/img/logo.jpg"></a>
+      <hgroup class="introduce">
+        <h5 class="nickname">MeetIn</h5>
+        <a href="mailto:undefined" title="supprot@meetin.co" class="mail">supprot@meetin.co</a>
+      </hgroup>
+    </div>
+  </div>
+  <ul class="nav flex-col">
+    
+        <li class="waves-block waves-effect">
+          <a href="/"  >
+            <i class="icon icon-lg icon-home"></i>
+            主页
+          </a>
+        </li>
+    
+        <li class="waves-block waves-effect">
+          <a href="/archives"  >
+            <i class="icon icon-lg icon-archives"></i>
+            归档
+          </a>
+        </li>
+    
+        <li class="waves-block waves-effect">
+          <a href="/tags"  >
+            <i class="icon icon-lg icon-tags"></i>
+            标签
+          </a>
+        </li>
+    
+        <li class="waves-block waves-effect">
+          <a href="https://github.com/meetinco" target="_blank" >
+            <i class="icon icon-lg icon-github"></i>
+            Github
+          </a>
+        </li>
+    
+  </ul>
+
+  <footer class="footer">
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
+  <p>MeetIn &copy; 2016</p>
+  <p>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
+  <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
+  <a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
+</footer>
+
+</div>
+
+  </nav>
+  <main id="main">
+    <header class="header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">微信本地开发环境</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input " autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-share">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header">
+  <div class="container">
+    <h1 class="author">微信本地开发环境</h1>
+    <h5 class="subtitle">2016-10-08</h5>
+  </div>
+</header>
+
+    <div class="container body-wrap">
+      
+  <article id="post-2016-10-08-wei-xin-ben-di-kai-fa-huan-jing" class="article article-type-post" itemprop="blogPost">
+    
+      <div class="post-meat flex-row">
+        <div class="flex-col">
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ngrok/">ngrok</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信/">微信</a></li></ul>
+</div>
+      </div>
+      <div class="post-body">
+
+        <aside class="post-widget" id="post-widget">
+
+          
+          <div class="post-share" id="post-share">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
+          豆
+        </a>
+      </li>
+    </ul>
+ </div>
+
+          
+
+          
+          <nav class="post-toc-wrap" id="post-toc">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ngrok的安装和使用"><span class="post-toc-text">ngrok的安装和使用</span></a></li></ol>
+          </nav>
+          
+        </aside>
+
+        <div class="post-main">
+
+            <div class="post-content" id="post-content" itemprop="postContent">
+            <p>借助ngrok实现微信本地开发<br><a id="more"></a></p>
+<h2 id="ngrok的安装和使用"><a href="#ngrok的安装和使用" class="headerlink" title="ngrok的安装和使用"></a>ngrok的安装和使用</h2><p>请到<a href="https://ngrok.com/download" target="_blank" rel="external">这里</a>下载安装<br>拥有Mac的同学：  </p>
+<ol>
+<li>将下载的ngrok文件copy到 <code>/usr/local/bin/</code> 目录下  </li>
+<li><p>找到文件 <code>~/.ngrok2/ngrok.yml</code>（如果没有就新建），修改内容为</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">tunnels:</div><div class="line">   	meetin_service:</div><div class="line">       	proto: http</div><div class="line">        inspect: false</div><div class="line">        addr: 8080</div></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ngrok.yml 文件位置</div><div class="line">OS X	/Users/example/.ngrok2/ngrok.yml</div><div class="line">Linux	/home/example/.ngrok2/ngrok.yml</div><div class="line">Windows	C:\Users\example\.ngrok2\ngrok.yml</div></pre></td></tr></table></figure>
+</li>
+<li><p>打开工程 <code>meetin_web_node</code>，找到文件 <code>server/config/global_local.js</code></p>
+</li>
+<li><p><code>global_local.js</code>文件下方，加入自己的逻辑</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">//如何拥有自己的微信开发账号，请咨询 nate 或者 百度一下</div><div class="line">//如何获得自己的微信id（不是微信号），给微信公众号发条消息，到后台看数据吧</div><div class="line">if (process.env.USER == &apos;gukong&apos;) &#123;</div><div class="line">	    configure.wx_appid = &apos;wx08x2zf9f5454x&apos;;//这是开发公众号</div><div class="line">   	configure.wx_secret = &apos;3dx3695x252e8b44f2xdad9de&apos;;</div><div class="line">    configure.wx_self = &apos;ox0x_ILxss729aS4jVxgqixc&apos;;//自己的微信id</div><div class="line">&#125;</div><div class="line">else if (process.env.USER == &apos;example&apos;) &#123;</div><div class="line">	configure.wx_appid = &apos;xxx&apos;;</div><div class="line">   	configure.wx_secret = &apos;xxx&apos;;</div><div class="line">    configure.wx_self = &apos;xxx&apos;;</div><div class="line">&#125;</div><div class="line">else &#123;</div><div class="line">    configure.wx_appid = &apos;&apos;;</div><div class="line">   	configure.wx_secret = &apos;&apos;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>找到文件 <code>server/start_ngrok.js</code>，右键点击文件，然后点击选项 <code>Run start_ngrok.js</code><br> 如下所示表明启动ngrok服务成功，现在可以进行微信本地开发了（开发期间请勿关闭该服务，如果关闭了，请重新运行）</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">try to get public url 1</div><div class="line">try to get public url 2</div><div class="line">http://8e422a4e.ngrok.io</div><div class="line">nate-log postAsync:http://meetin.co:38082/wechat/add_url</div><div class="line">nate-log postAsync error null</div><div class="line">nate-log body: success</div><div class="line">success</div></pre></td></tr></table></figure>
+</li>
+<li><p>微信本地开发，只能与自己的测试公众号交互</p>
+</li>
+</ol>
+<p>拥有Windows的小伙伴:<br>相关步骤都一样，只是ngrok的安装和ngrok.yml文件的路径不同，如果遇到问题，请查阅<a href="https://ngrok.com/docs#config-location" target="_blank" rel="external">文档</a></p>
+
+            <blockquote>
+              <p>
+                本文地址：
+                <a href="http://meetinco.github.io/2016/10/08/2016-10-08-wei-xin-ben-di-kai-fa-huan-jing/" target="_blank" rel="external">http://meetinco.github.io/2016/10/08/2016-10-08-wei-xin-ben-di-kai-fa-huan-jing/</a>
+              </p>
+              <footer><cite><a href="http://meetinco.github.io">@MeetIn</a></cite></footer>
+            </blockquote>
+            </div>
+            
+<nav class="post-nav flex-row">
+  <div class="flex-col waves-block waves-effect prev">
+    
+  </div>
+  <div class="flex-col waves-block waves-effect next">
+    
+      <a href="/2016/09/13/2016-09-13-wei-xin-gong-zhong-hao-kai-fa-yi-ji-wei-xin-kai-fa-huan-jing-zhu-yi-shi-xiang/" title="微信公众号开发以及微信开发环境注意事项" id="post-next" class="post-nav-link">
+        <span class="article-nav-title">下一篇</span>
+        <i class="icon icon-chevron-right"></i>
+      </a>
+    
+  </div>
+
+</nav>
+
+
+
+            
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2016-10-08-wei-xin-ben-di-kai-fa-huan-jing" data-title="微信本地开发环境" data-url="http://meetinco.github.io/2016/10/08/2016-10-08-wei-xin-ben-di-kai-fa-huan-jing/index.html"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"gukong123"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+
+        </div>
+
+      </div>
+
+    
+
+  </article>
+
+
+
+    </div>
+  </main>
+<div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+<script>
+var BLOG_SHARE = {
+    title: "微信本地开发环境",
+    pic: "/img/logo.jpg",
+    summary: document.getElementsByName('summary')[0].content,
+    url: "http://meetinco.github.io/2016/10/08/2016-10-08-wei-xin-ben-di-kai-fa-huan-jing/index.html"
+};
+</script>
+<div class="global-share" id="global-share">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
+          豆
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script src="/js/main.js"></script>
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<script type="text/template" id="search-tpl">
+<li class="item">
+    <a href="/{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</script>
+
+<script src="/js/search.js"></script>
+
+
+
+
+
+
+
+
+
+</body>
+</html>

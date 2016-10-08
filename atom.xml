@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://meetinco.github.io/"/>
-  <updated>2016-09-13T12:42:04.000Z</updated>
+  <updated>2016-10-08T08:54:18.000Z</updated>
   <id>http://meetinco.github.io/</id>
   
   <author>
@@ -14,6 +14,50 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>微信本地开发环境</title>
+    <link href="http://meetinco.github.io/2016/10/08/2016-10-08-wei-xin-ben-di-kai-fa-huan-jing/"/>
+    <id>http://meetinco.github.io/2016/10/08/2016-10-08-wei-xin-ben-di-kai-fa-huan-jing/</id>
+    <published>2016-10-08T08:04:29.000Z</published>
+    <updated>2016-10-08T08:54:18.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>借助ngrok实现微信本地开发<br><a id="more"></a></p>
+<h2 id="ngrok的安装和使用"><a href="#ngrok的安装和使用" class="headerlink" title="ngrok的安装和使用"></a>ngrok的安装和使用</h2><p>请到<a href="https://ngrok.com/download" target="_blank" rel="external">这里</a>下载安装<br>拥有Mac的同学：  </p>
+<ol>
+<li>将下载的ngrok文件copy到 <code>/usr/local/bin/</code> 目录下  </li>
+<li><p>找到文件 <code>~/.ngrok2/ngrok.yml</code>（如果没有就新建），修改内容为</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">tunnels:</div><div class="line">   	meetin_service:</div><div class="line">       	proto: http</div><div class="line">        inspect: false</div><div class="line">        addr: 8080</div></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ngrok.yml 文件位置</div><div class="line">OS X	/Users/example/.ngrok2/ngrok.yml</div><div class="line">Linux	/home/example/.ngrok2/ngrok.yml</div><div class="line">Windows	C:\Users\example\.ngrok2\ngrok.yml</div></pre></td></tr></table></figure>
+</li>
+<li><p>打开工程 <code>meetin_web_node</code>，找到文件 <code>server/config/global_local.js</code></p>
+</li>
+<li><p><code>global_local.js</code>文件下方，加入自己的逻辑</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">//如何拥有自己的微信开发账号，请咨询 nate 或者 百度一下</div><div class="line">//如何获得自己的微信id（不是微信号），给微信公众号发条消息，到后台看数据吧</div><div class="line">if (process.env.USER == &apos;gukong&apos;) &#123;</div><div class="line">	    configure.wx_appid = &apos;wx08x2zf9f5454x&apos;;//这是开发公众号</div><div class="line">   	configure.wx_secret = &apos;3dx3695x252e8b44f2xdad9de&apos;;</div><div class="line">    configure.wx_self = &apos;ox0x_ILxss729aS4jVxgqixc&apos;;//自己的微信id</div><div class="line">&#125;</div><div class="line">else if (process.env.USER == &apos;example&apos;) &#123;</div><div class="line">	configure.wx_appid = &apos;xxx&apos;;</div><div class="line">   	configure.wx_secret = &apos;xxx&apos;;</div><div class="line">    configure.wx_self = &apos;xxx&apos;;</div><div class="line">&#125;</div><div class="line">else &#123;</div><div class="line">    configure.wx_appid = &apos;&apos;;</div><div class="line">   	configure.wx_secret = &apos;&apos;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>找到文件 <code>server/start_ngrok.js</code>，右键点击文件，然后点击选项 <code>Run start_ngrok.js</code><br> 如下所示表明启动ngrok服务成功，现在可以进行微信本地开发了（开发期间请勿关闭该服务，如果关闭了，请重新运行）</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">try to get public url 1</div><div class="line">try to get public url 2</div><div class="line">http://8e422a4e.ngrok.io</div><div class="line">nate-log postAsync:http://meetin.co:38082/wechat/add_url</div><div class="line">nate-log postAsync error null</div><div class="line">nate-log body: success</div><div class="line">success</div></pre></td></tr></table></figure>
+</li>
+<li><p>微信本地开发，只能与自己的测试公众号交互</p>
+</li>
+</ol>
+<p>拥有Windows的小伙伴:<br>相关步骤都一样，只是ngrok的安装和ngrok.yml文件的路径不同，如果遇到问题，请查阅<a href="https://ngrok.com/docs#config-location" target="_blank" rel="external">文档</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;借助ngrok实现微信本地开发&lt;br&gt;
+    
+    </summary>
+    
+      <category term="教程" scheme="http://meetinco.github.io/categories/%E6%95%99%E7%A8%8B/"/>
+    
+    
+      <category term="微信" scheme="http://meetinco.github.io/tags/%E5%BE%AE%E4%BF%A1/"/>
+    
+      <category term="ngrok" scheme="http://meetinco.github.io/tags/ngrok/"/>
+    
+  </entry>
   
   <entry>
     <title>微信公众号开发以及微信开发环境注意事项</title>
