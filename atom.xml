@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://meetinco.github.io/"/>
-  <updated>2016-10-08T09:11:25.000Z</updated>
+  <updated>2016-10-08T09:13:16.000Z</updated>
   <id>http://meetinco.github.io/</id>
   
   <author>
@@ -20,14 +20,14 @@
     <link href="http://meetinco.github.io/2016/10/08/2016-10-08-wei-xin-ben-di-kai-fa-huan-jing/"/>
     <id>http://meetinco.github.io/2016/10/08/2016-10-08-wei-xin-ben-di-kai-fa-huan-jing/</id>
     <published>2016-10-08T08:04:29.000Z</published>
-    <updated>2016-10-08T09:11:25.000Z</updated>
+    <updated>2016-10-08T09:13:16.000Z</updated>
     
     <content type="html"><![CDATA[<p>借助ngrok实现微信本地开发<br><a id="more"></a></p>
 <h2 id="ngrok的安装和使用"><a href="#ngrok的安装和使用" class="headerlink" title="ngrok的安装和使用"></a>ngrok的安装和使用</h2><p>请到<a href="https://ngrok.com/download" target="_blank" rel="external">这里</a>下载安装，查阅<a href="https://ngrok.com/docs#config-location" target="_blank" rel="external">文档</a><br>以Mac为例：  </p>
 <ol>
 <li>将下载的ngrok文件copy到 <code>/usr/local/bin/</code> 目录下  </li>
 <li><p>找到文件 <code>~/.ngrok2/ngrok.yml</code>（如果没有就新建），修改内容为</p>
- <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">tunnels:</div><div class="line">   	meetin_service:</div><div class="line">       	proto: http</div><div class="line">        inspect: false</div><div class="line">        addr: 8080</div></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">tunnels:</div><div class="line">	meetin_service:</div><div class="line">		proto: http</div><div class="line">		inspect: false</div><div class="line">		addr: 8080</div></pre></td></tr></table></figure>
 </li>
 <li><p>ngrok.yml 文件位置</p>
  <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">OS X		/Users/example/.ngrok2/ngrok.yml</div><div class="line">Linux		/home/example/.ngrok2/ngrok.yml</div><div class="line">Windows		C:\Users\example\.ngrok2\ngrok.yml</div></pre></td></tr></table></figure>
