@@ -13,7 +13,7 @@
 <meta property="og:url" content="http://meetinco.github.io/2016/10/08/2016-10-08-wei-xin-ben-di-kai-fa-huan-jing/index.html">
 <meta property="og:site_name" content="MeetIn">
 <meta property="og:description" content="借助ngrok实现微信本地开发">
-<meta property="og:updated_time" content="2016-10-08T09:13:16.000Z">
+<meta property="og:updated_time" content="2016-10-08T09:16:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微信本地开发环境">
 <meta name="twitter:description" content="借助ngrok实现微信本地开发">
@@ -199,7 +199,7 @@
 </li>
 <li>打开工程 <code>meetin_web_node</code>，找到文件 <code>server/config/global_local.js</code></li>
 <li><p><code>global_local.js</code>文件下方，加入自己的逻辑</p>
- <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">//如何拥有自己的微信开发账号，请咨询 nate 或者 百度一下</div><div class="line">if (process.env.USER == &apos;gukong&apos;) &#123;</div><div class="line">	    configure.wx_appid = &apos;wx08x2zf9f5454x&apos;;//这是开发公众号</div><div class="line">   	configure.wx_secret = &apos;3dx3695x252e8b44f2xdad9de&apos;;</div><div class="line">    configure.wx_self = &apos;gh_1a2x5scs3fc&apos;;//测试公众号的微信号</div><div class="line">&#125;</div><div class="line">else if (process.env.USER == &apos;example&apos;) &#123;</div><div class="line">	configure.wx_appid = &apos;xxx&apos;;</div><div class="line">   	configure.wx_secret = &apos;xxx&apos;;</div><div class="line">    configure.wx_self = &apos;xxx&apos;;</div><div class="line">&#125;</div><div class="line">else &#123;</div><div class="line">    configure.wx_appid = &apos;&apos;;</div><div class="line">   	configure.wx_secret = &apos;&apos;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">if (process.env.USER == &apos;gukong&apos;) &#123;</div><div class="line">	    configure.wx_appid = &apos;wx08x2zf9f5454x&apos;;//这是开发公众号</div><div class="line">   	configure.wx_secret = &apos;3dx3695x252e8b44f2xdad9de&apos;;</div><div class="line">    configure.wx_self = &apos;gh_1a2x5scs3fc&apos;;//测试公众号的微信号</div><div class="line">&#125;</div><div class="line">else if (process.env.USER == &apos;example&apos;) &#123;</div><div class="line">	configure.wx_appid = &apos;xxx&apos;;</div><div class="line">   	configure.wx_secret = &apos;xxx&apos;;</div><div class="line">    configure.wx_self = &apos;xxx&apos;;</div><div class="line">&#125;</div><div class="line">else &#123;</div><div class="line">    configure.wx_appid = &apos;&apos;;</div><div class="line">   	configure.wx_secret = &apos;&apos;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>找到文件 <code>server/start_ngrok.js</code>，右键点击文件，然后点击选项 <code>Run start_ngrok.js</code><br> 如下所示表明启动ngrok服务成功，现在可以进行微信本地开发了（开发期间请勿关闭该服务，如果关闭了，请重新运行）</p>
  <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">try to get public url 1</div><div class="line">try to get public url 2</div><div class="line">http://8e422a4e.ngrok.io</div><div class="line">nate-log postAsync:http://meetin.co:38082/wechat/add_url</div><div class="line">nate-log postAsync error null</div><div class="line">nate-log body: success</div><div class="line">success</div></pre></td></tr></table></figure>
